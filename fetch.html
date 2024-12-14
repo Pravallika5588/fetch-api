@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Document</title>
+    <style>
+         img{
+        width: 100px;
+        height: 100px;
+        
+
+      }
+      img:hover{
+        transform: scale(1.1);
+      }
+      .container{
+        display: grid;
+        grid-template-columns: auto auto ;
+        gap: 5px;
+        border: 2px solid black;
+      }
+      .container>div:hover{
+        background-color: whitesmoke;
+        transform: scale(1.1);
+      }
+      .container>div{
+        /* border: 2px solid blue; */
+        width: 50%;
+        text-align: center;
+        padding: 10px;
+        height: 70vh;
+        border-radius: 15px;
+        margin: 20%;
+        box-sizing: border-box;
+        margin-top: 10%;
+        box-shadow: 10px 10px 10px grey;
+        
+
+      }
+      button{
+        background-color: rgb(114, 231, 114);
+       display:grid;
+       margin-left: 30%;
+       width: 50%;
+       height: 10%;
+      }
+      #cart{
+        /* display: flex
+        !important; */
+        border-radius: 50px;
+          /* width: 20px;
+          height: 10px; */
+          font-size: 30px;
+          /* margin: 150px; */
+          border: 2px solid black;
+          padding: 20px;
+         
+      }
+      .heading{
+        margin-top: 0%;
+      }
+      #cart:hover{
+        color: red;
+      }
+     
+    </style>
+</head>
+<body>
+
+    <br>
+  <span onclick="fun1()" id="cart"><i class="fa-solid fa-heart"></i></span>
+  <span onclick="fun()" id="cart"><i class="fa-solid fa-cart-shopping"></i></span>
+  <center>
+
+    <h1 class="heading">ONLINE SHOPPING....</h1>
+  </center>
+
+    
+    <div class="container" id="parent"></div>
+    <script>
+        fetch("https://fakestoreapi.com/products")
+        .then((val)=>val.json())
+        .then((data)=>{
+            data.forEach(element => {
+                
+                parent=document.getElementById("parent")
+             emp=[]
+    
+    let newdata=data.map((val)=>{
+        
+        var child=document.createElement("div")
+        var childa=document.createElement("div")
+        var childb=document.createElement("div")
+        var childc=document.createElement("div")
+        var childd=document.createElement("div")
+        var img=document.createElement("img")
+        var btn=document.createElement("button")
+        var btn1=document.createElement("button")
+
+        btn.innerHTML=" favourites"
+        btn1.innerText="Add to cart"
+
+
+         img.src=val.image
+
+        btn.addEventListener("click",function(){
+          // alert(" Added to cart")
+          console.log(val);
+          emp.push(val)
+          localStorage.setItem("details",JSON.stringify(emp))
+          
+        })
+        
+        btn1.addEventListener("click",function(){
+          // alert(" Added to cart")
+          console.log(val);
+          emp.push(val)
+          localStorage.setItem("add",JSON.stringify(emp))
+          
+        })
+        
+        childa.innerHTML="Price:$ "+val.price
+        childa.style.marginTop="10%";
+    childb.innerHTML=val.title
+    childb.style.marginTop="10%";
+    childc.innerHTML="Category: "+val.category
+    childd.src=val.image;
+    childd.style.width = "26%"; 
+    childd.style.height = "auto";
+    childd.style.paddingTop="20px";
+    childd.style.paddingLeft="50%";
+    childa.style.color="red"
+    childc.style.color="grey"
+    btn.style.height="10%";
+    btn.style.marginTop="5%";
+    btn.style.borderRadius="5%"
+    btn1.style.height="10%";
+    btn1.style.marginTop="5%";
+    btn1.style.borderRadius="5%";
+    btn.style.paddingTop="5px";
+    btn1.style.paddingTop="5px";
+    childc.style.marginTop="5%"
+
+
+
+
+        child.append(childa,childb,childc,childd,img,btn,btn1)
+        // console.log(child);
+        parent.append(child)
+      })
+      
+      
+      
+      
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    });
+}
+)
+function fun(){
+window.open("cart.html","_self")
+}
+function fun1(){
+window.open("addtocart.html","_self")
+}
+
+
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    </script>
+</body>
+</html>

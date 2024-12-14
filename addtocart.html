@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    img{
+        width: 100px;
+        height: 100px;
+        
+
+      }
+      img:hover{
+        transform: scale(1.1);
+      }
+      .container{
+        display: grid;
+        grid-template-columns: auto auto ;
+        gap: 5px;
+        border: 2px solid black;
+      }
+      .container>div:hover{
+        background-color: whitesmoke;
+        transform: scale(1.1);
+      }
+      .container>div{
+        /* border: 2px solid blue; */
+        width: 50%;
+        text-align: center;
+        padding: 10px;
+        height: 70vh;
+        border-radius: 15px;
+        margin: 20%;
+        box-sizing: border-box;
+        margin-top: 10%;
+        box-shadow: 10px 10px 10px grey;
+        
+
+      }
+      button{
+        background-color: rgb(114, 231, 114);
+       display:grid;
+       margin-left: 30%;
+       width: 50%;
+       height: 10%;
+      }
+      #cart{
+        /* display: flex
+        !important; */
+        border-radius: 50px;
+          /* width: 20px;
+          height: 10px; */
+          font-size: 30px;
+          /* margin: 150px; */
+          border: 2px solid black;
+          padding: 20px;
+         
+      }
+      .heading{
+        margin-top: 0%;
+      }
+      #cart:hover{
+        color: red;
+      }
+    </style>
+</head>
+<body>
+    <div class="container" id="parent" ></div>
+    
+    <script>
+        let getdata=JSON.parse(localStorage.getItem("details"))
+        console.log(getdata);
+
+        newgetdata=getdata.map((val)=>{
+    
+           
+            
+        parent=document.getElementById("parent")
+
+            var child=document.createElement("div")
+        var childa=document.createElement("div")
+        var childb=document.createElement("div")
+        var childc=document.createElement("div")
+        var childd=document.createElement("div")
+        var img=document.createElement("img")
+       
+
+         img.src=val.image
+
+
+         childa.innerHTML="Price:$ "+val.price
+         childa.style.marginTop="10%";
+         childb.innerHTML=val.title
+         childc.innerText="Category: "+val.category
+         img.style.width = "56%"; // Set the width of the image 
+         img.style.height = "auto";
+         img.style.paddingTop="8px";
+         img.style.paddingLeft="10%";
+         childa.style.color="red"
+         childc.style.color="grey"
+         childc.style.marginTop="5%"
+         childb.style.marginTop="5%"
+
+    
+
+
+
+
+    //    childa.innerHTML="Price:$ "+val.price
+    //     childa.style.marginTop="10%";
+    // childb.innerHTML=val.title
+    // childb.style.marginTop="10%";
+    // childc.innerHTML="Category: "+val.category
+    // childd.src=val.image;
+    // childd.style.width = "26%"; // Set the width of the image 
+    // childd.style.height = "auto";
+    // childd.style.paddingTop="20px";
+    // childd.style.paddingLeft="50%";
+    // childa.style.color="red"
+    // childc.style.color="grey"
+    // btn.style.height="10%";
+    // btn.style.marginTop="5%";
+    // btn.style.borderRadius="5%"
+    // btn1.style.height="10%";
+    // btn1.style.marginTop="5%";
+    // btn1.style.borderRadius="5%";
+    // btn.style.paddingTop="5px";
+    // btn1.style.paddingTop="5px";
+    // childc.style.marginTop="5%"
+
+
+    child.append(childa,childb,childc,img)
+        // console.log(child);
+        parent.append(child)
+      })
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+    </script>
+</body>
+</html>

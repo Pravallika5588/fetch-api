@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    img{
+        width: 100px;
+        height: 100px;
+        
+      }
+      .container{
+        display: grid;
+        grid-template-columns: auto auto ;
+        gap: 5px;
+        border: 2px solid black;
+      }
+      .container>div{
+        border: 2px solid blue;
+        width: 50%;
+        text-align: center;
+        padding: 10px;
+        height: 70vh;
+        border-radius: 15px;
+        margin: 20%;
+        box-sizing: border-box;
+        margin-top: 10%;
+        
+
+      }
+     
+    </style>
+</head>
+<body>
+    <div class="container" id="parent"></div>
+    <script>
+        let getdata=JSON.parse(localStorage.getItem("add"))
+        console.log(getdata);
+
+        newgetdata=getdata.map((val)=>{
+    
+           
+            
+        parent=document.getElementById("parent")
+
+            var child=document.createElement("div")
+        var childa=document.createElement("div")
+        var childb=document.createElement("div")
+        var childc=document.createElement("div")
+        var childd=document.createElement("div")
+        var img=document.createElement("img")
+       
+
+         img.src=val.image
+
+    
+         childa.innerHTML="Price:$ "+val.price
+         childa.style.marginTop="10%";
+         childb.innerHTML=val.title
+         childc.innerText="Category: "+val.category
+         img.style.width = "56%"; // Set the width of the image 
+         img.style.height = "auto";
+         img.style.paddingTop="8px";
+         img.style.paddingLeft="10%";
+         childa.style.color="red"
+         childc.style.color="grey"
+         childc.style.marginTop="5%"
+         childb.style.marginTop="5%"
+
+
+
+        child.append(childa,childb,childc,childd,img)
+        // console.log(child);
+        parent.append(child)
+      })
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+    </script>
+</body>
+</html>
